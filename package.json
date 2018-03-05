@@ -1,0 +1,19 @@
+{
+  "name": "image-search-abstraction-layer",
+  "version": "0.0.1",
+  "description": "Image Search Abstraction Layer",
+  "main": "server.js",
+  "repository": "https://github.com/davidzambo/fcc-image-search-abstraction-layer.git",
+  "author": "<david@dcmf.hu>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "google-images": "^2.1.0",
+    "mongoose": "^5.0.8"
+  }
+}
