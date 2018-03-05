@@ -5,6 +5,12 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 4000;
+app.use(express.static('public'));
+
+// pug setup
+const pug = require('pug');
+app.set('views', './views');
+app.set('view engine', 'pug');
 
 // db setup
 const mongoose = require('mongoose');
@@ -22,13 +28,14 @@ const apiKey = process.env.API_KEY;
 const GoogleImages = require('google-images');
 const searchClient = new GoogleImages(engineID, apiKey);
 
+
 app.all('/', (req, res) => {
-  res.send('Description');
+  res.render('index');
 });
 
 // search
-app.get('/search/:name', (req, res) => {
-  const query = req.params.name
+app.get(['/search/:name', '/search?'], (req, res) => {
+  const query = req.query.query || req.params.name
   // store the search query
   const newSearch = new Search({query: query})
   try {
@@ -69,6 +76,11 @@ app.get('/latest', (req, res) => {
     const result = docs.map(doc => {return { query: doc.query, date: doc.date}});
     res.json(result);
   })
+})
+
+// 404
+app.all('/(*+)', (req, res) =>  {
+  res.render('index', {wrongRoute: true});
 })
 
 app.listen(port, () => { console.log(`Server is up and listening on port ${port}`);});

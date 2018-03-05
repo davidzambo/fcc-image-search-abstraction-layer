@@ -1,0 +1,39 @@
+doctype html
+html(lang="en")
+  head
+    title="Image search abstraction layer"
+    link(href='https://www.dcmf.hu/favicon.ico' rel='icon')
+    link(href='/css/styles.css', rel='stylesheet')
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet")
+  body.d-flex.flex-column.justify-content-between
+    div.container-fluid
+      div.row.pt-2
+        div.col-12
+          if wrongRoute
+            p.alert.alert-danger 404 - Whoops! You request can not be served!
+          h1.mb-0 Image search abstraction layer 
+          p a freeCodeCamp backend project
+          hr
+          h3.pt-2 User stories:
+          ul
+            li I can get the image URLs, alt text and page urls for a set of images relating to a given search string.
+            li I can paginate through the responses by adding a ?offset=2 parameter to the URL.
+            li I can get a list of the most recently submitted search strings.
+          hr
+          h3.pt-2 Basic usage
+          span URL: #[pre.text-danger.my-1 /search?query=Kung Fury] or #[pre.text-danger.my-1 /search/Kung Fury]
+          br
+          span Result: #[pre#json-preview.text-muted.my-1 ]
+        div.col-12.col-md-7.col-lg-6.col-xl-5.pt-4
+          div.card
+           div.card-body
+            form(method='GET' action='/search/')
+              div.form-group
+                label What kind of pictures are you looking for?
+                input.form-control(type='text', name='query', required='true')
+              button.btn.btn-primary.btn-block(type='submit') search
+        div.col-12.pt-4
+          a(href='/latest', target='_blank') Click here to check the latest searches!
+    footer.col-12.d-flex.justify-content-center.align-content-middle
+      p codedBy#[img(src="https://www.dcmf.hu/images/dcmf-letters.png" alt="David's Code ManuFactory logo")]
+  script(src='/js/script.js')
