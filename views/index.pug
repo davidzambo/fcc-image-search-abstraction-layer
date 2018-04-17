@@ -7,10 +7,10 @@ html(lang="en")
     link(href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet")
   body.d-flex.flex-column.justify-content-between
     div.container-fluid
-      div.row.pt-2
+      div.row.pt-2.justify-content-center
         div.col-12
           if wrongRoute
-            p.alert.alert-danger 404 - Whoops! You request can not be served!
+            p.alert.alert-danger 404 - Whoops! You request cannot be served!
           h1.mb-0 Image search abstraction layer 
           p a freeCodeCamp backend project
           hr
@@ -24,7 +24,7 @@ html(lang="en")
           span URL: #[pre.text-danger.my-1 /search?query=Kung Fury] or #[pre.text-danger.my-1 /search/Kung Fury]
           br
           span Result: #[pre#json-preview.text-muted.my-1 ]
-        div.col-12.col-md-7.col-lg-6.col-xl-5.pt-4
+        div.col-12.col-md-7.col-lg-6.col-xl-3.pt-4
           div.card
            div.card-body
             form(method='GET' action='/search/')

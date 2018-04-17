@@ -14,7 +14,7 @@ app.set('view engine', 'pug');
 
 // db setup
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URI);
+mongoose.connect(process.env.MONGODB_URI);
 const Schema = mongoose.Schema;
 const SearchSchema = new Schema({
   query: String,
