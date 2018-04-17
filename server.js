@@ -72,7 +72,9 @@ app.get(['/search/:name', '/search?'], (req, res) => {
 
 // list searchs
 app.get('/latest', (req, res) => {
-  Search.find({}, (err, docs) =>{
+  Search.find({})
+      .sort({date: -1})
+      .exec((err, docs) =>{
     const result = docs.map(doc => {return { query: doc.query, date: doc.date}});
     res.json(result);
   })
